@@ -3,7 +3,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import Home from './pages/Home';
 import AllUsers from './pages/AllUsers';
-import AddUsers from './pages/AddUsers';
+import AddUsers from './pages/AddUser';
+import EditUser from './pages/Edit';
 
 function App() {
   return (
@@ -21,6 +22,10 @@ function App() {
         <Route
           path="/add"
           element={<AddUsers />}
+        />
+        <Route
+          path="/edit/:id"
+          element={<EditUser />}
         />
       </Routes>
     </BrowserRouter>

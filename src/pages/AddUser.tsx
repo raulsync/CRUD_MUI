@@ -34,9 +34,7 @@ const AddUsers = () => {
   const handleInputChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
-    console.log(e.type);
     setUser({ ...user, [e.target.name]: e.target.value });
-    console.log(user);
   };
 
   const handleAddUser = async (e: React.FormEvent) => {
@@ -92,7 +90,6 @@ export interface IState {
   username: string;
   email: string;
   phone: string;
-  id?: number;
 }
 
 export default AddUsers;

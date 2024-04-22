@@ -1,10 +1,18 @@
 {
   "users": [
     {
+      "id": "24e4",
       "name": "Rahul Anand",
-      "username": "rahulanand09",
-      "email": "rahul@mail.com",
-      "phone": "0123456789"
+      "username": "rahulanand10",
+      "email": "rahulanand15497@gmail.com",
+      "phone": "09199670991"
+    },
+    {
+      "id": "1c87",
+      "name": "Prashant",
+      "username": "prao",
+      "email": "prashantsingh@mail.com",
+      "phone": "0122334534"
     }
   ]
 }
