@@ -1,4 +1,5 @@
 import {
+  Button,
   Table,
   TableBody,
   TableCell,
@@ -6,25 +7,26 @@ import {
   TableRow,
   styled,
 } from '@mui/material';
-import { IDataType, getUsers } from '../services/api';
+import { IDataType, getUsers, deleteUser } from '../services/api';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
-const TableStyle = styled(Table)({
-  width: ' 90%',
-  margin: '55px auto 0 auto',
-});
+const TableStyle = styled(Table)`
+  width: 90%;
+  margin: 50px 0 0 50px;
+`;
 
 const Thead = styled(TableRow)`
-  background: #3e3e3e;
-  > th {
-    color: #fff;
+  & > th {
     font-size: 20px;
+    background: #3e3e3e;
+    color: #ffffff;
   }
 `;
 
-const Tbody = styled(TableRow)`
-  > td {
-    font-size: 20px;
+const TRow = styled(TableRow)`
+  & > td {
+    font-size: 18px;
   }
 `;
 
@@ -45,6 +47,11 @@ const AllUsers = () => {
     }
   };
 
+  const deleteuserDetail = async (id) => {
+    await deleteUser(id);
+    getAllUsers();
+  };
+
   return (
     <TableStyle>
       <TableHead>
@@ -54,17 +61,35 @@ const AllUsers = () => {
           <TableCell>User Name</TableCell>
           <TableCell>Email</TableCell>
           <TableCell>Mobile No.</TableCell>
+          <TableCell></TableCell>
         </Thead>
       </TableHead>
       <TableBody>
         {users?.map((user) => (
-          <Tbody key={user.id}>
+          <TRow key={user.id}>
             <TableCell>{user.id}</TableCell>
             <TableCell>{user.name}</TableCell>
             <TableCell>{user.username}</TableCell>
             <TableCell>{user.email}</TableCell>
             <TableCell>{user.phone}</TableCell>
-          </Tbody>
+            <TableCell>
+              <Button
+                variant="contained"
+                style={{ marginRight: '5px', backgroundColor: '#21b6ae' }}
+                color="secondary"
+                component={Link}
+                to={`/edit/${user.id}`}
+              >
+                Edit
+              </Button>
+              <Button
+                variant="contained"
+                onClick={() => deleteuserDetail(user.id)}
+              >
+                Delete
+              </Button>
+            </TableCell>
+          </TRow>
         ))}
       </TableBody>
     </TableStyle>
